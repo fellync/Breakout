@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://qfiha3ece8ys"]
+[gd_scene load_steps=9 format=3 uid="uid://qfiha3ece8ys"]
 
 [ext_resource type="Texture2D" uid="uid://dot2l4ikqbbgl" path="res://glowCircle.png" id="1_5y1fa"]
 [ext_resource type="PackedScene" uid="uid://cxkrfpfe8xbx5" path="res://wall.tscn" id="1_kxajc"]
@@ -11,6 +11,12 @@ bounce = 1.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rwa5x"]
 radius = 25.02
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ldb07"]
+size = Vector2(1821, 48.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jtmkt"]
+size = Vector2(63, 991)
 
 [node name="Level" type="Node2D"]
 
@@ -34,3 +40,17 @@ metadata/_edit_lock_ = true
 
 [node name="Ai" parent="." instance=ExtResource("2_10ql3")]
 position = Vector2(775, 844)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(796.5, -27)
+shape = SubResource("RectangleShape2D_ldb07")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-30, 408)
+shape = SubResource("RectangleShape2D_jtmkt")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1637, 402)
+shape = SubResource("RectangleShape2D_jtmkt")
