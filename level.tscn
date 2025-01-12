@@ -1,0 +1,36 @@
+[gd_scene load_steps=7 format=3 uid="uid://qfiha3ece8ys"]
+
+[ext_resource type="Texture2D" uid="uid://dot2l4ikqbbgl" path="res://glowCircle.png" id="1_5y1fa"]
+[ext_resource type="PackedScene" uid="uid://cxkrfpfe8xbx5" path="res://wall.tscn" id="1_kxajc"]
+[ext_resource type="PackedScene" uid="uid://d4uulg1xl1yf" path="res://ai.tscn" id="2_10ql3"]
+[ext_resource type="Script" path="res://ball.gd" id="2_jaioi"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_kwv4y"]
+friction = 0.0
+bounce = 1.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rwa5x"]
+radius = 25.02
+
+[node name="Level" type="Node2D"]
+
+[node name="Wall" parent="." instance=ExtResource("1_kxajc")]
+
+[node name="Ball" type="RigidBody2D" parent="."]
+position = Vector2(775, 735)
+physics_material_override = SubResource("PhysicsMaterial_kwv4y")
+gravity_scale = 0.0
+script = ExtResource("2_jaioi")
+
+[node name="Sprite2D" type="Sprite2D" parent="Ball"]
+texture_filter = 1
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("1_5y1fa")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball"]
+shape = SubResource("CircleShape2D_rwa5x")
+metadata/_edit_lock_ = true
+
+[node name="Ai" parent="." instance=ExtResource("2_10ql3")]
+position = Vector2(775, 844)
